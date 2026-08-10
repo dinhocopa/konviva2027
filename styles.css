@@ -503,8 +503,17 @@ button{font:inherit;color:inherit}
   overflow:hidden;
   margin-bottom:var(--k-sp-10);
 }
-.hero__media{position:absolute;inset:0;background-size:cover;background-position:center}
-.hero__content{position:relative;max-width:min(46ch,52%)}
+.hero__media{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(90deg,var(--d-bg) 0%,rgba(0,0,0,0) 55%),
+             linear-gradient(0deg,var(--d-bg) 2%,rgba(0,0,0,0) 30%);
+}
+html[data-theme="light"] .hero::after{
+  background:linear-gradient(90deg,#FFFFFF 0%,rgba(255,255,255,0) 55%),
+             linear-gradient(0deg,#FFFFFF 2%,rgba(255,255,255,0) 30%);
+}
+.hero__content{position:relative;z-index:1;max-width:min(46ch,52%)}
 .hero__title{
   margin:0 0 var(--k-sp-4);
   font-size:clamp(28px,3vw,42px);
