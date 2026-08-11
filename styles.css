@@ -1336,7 +1336,7 @@ html[data-theme="light"] .ccard__foot{background:var(--pg-bg)}
 .alertbar{
   display:flex;align-items:center;gap:var(--k-sp-4);
   padding:var(--k-sp-4) var(--k-sp-5);
-  background:#000;border-radius:8px;
+  background:#E53935;border-radius:8px;
   margin-bottom:var(--k-sp-6);
 }
 .alertbar[hidden]{display:none}
