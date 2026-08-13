@@ -2328,7 +2328,7 @@ html[data-theme="light"] .tr__hero::after{
   color:var(--d-text);font-size:15px;cursor:pointer;border-radius:4px;
 }
 .tr__back:hover{background:var(--hover-soft)}
-.tr__hero-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:160px}
+.tr__hero-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:122px}
 .tr__title{margin:0 0 16px;font-size:38px;font-weight:700;color:var(--d-text);line-height:1.15}
 .tr__desc{margin:0 0 32px;max-width:640px;font-size:16px;line-height:1.6;color:var(--d-text)}
 .tr__tags{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 0 16px}
