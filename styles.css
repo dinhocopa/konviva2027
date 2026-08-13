@@ -1728,7 +1728,7 @@ html[data-theme="light"] .lp__hero::after{
   max-width:min(736px,90%);
   padding:48px 48px 154px;
 }
-.lp__hero-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:80px}
+.lp__hero-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:160px}
 .lp__back{
   position:absolute;top:40px;left:48px;z-index:2;
   display:inline-flex;align-items:center;gap:8px;
