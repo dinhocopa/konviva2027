@@ -506,8 +506,8 @@ button{font:inherit;color:inherit}
 .hero__media{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
 .hero::after{
   content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(90deg,var(--d-bg) 0%,rgba(0,0,0,0) 55%),
-             linear-gradient(0deg,var(--d-bg) 2%,rgba(0,0,0,0) 30%);
+  background:linear-gradient(90deg,var(--d-bg) 0%,var(--d-bg) 25%,rgba(0,0,0,0) 55%),
+             linear-gradient(0deg,var(--d-bg) 0%,var(--d-bg) 15%,rgba(0,0,0,0) 30%);
 }
 html[data-theme="light"] .hero::after{
   background:linear-gradient(90deg,#FFFFFF 0%,rgba(255,255,255,0) 55%),
