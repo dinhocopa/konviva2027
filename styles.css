@@ -2330,8 +2330,8 @@ html[data-theme="light"] .tr__hero::after{
 .tr__back:hover{background:var(--hover-soft)}
 .tr__hero-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:122px}
 .tr__title{margin:0 0 16px;font-size:38px;font-weight:700;color:var(--d-text);line-height:1.15}
-.tr__badge{padding:4px 10px;border:1px solid var(--d-border-strong);border-radius:4px;background:#121212;color:var(--d-text);font-size:12px;margin:0 0 16px}
-.tr__tags{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 0 16px}
+.tr__badge{padding:4px 10px;border-radius:4px;background:#121212;color:var(--d-text);font-size:12px}
+.tr__tags{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 16px}
 .tr__tag{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--d-text)}
 .tr__tag svg{color:var(--d-text)}
 .tr__dot{width:6px;height:6px;border-radius:50%;background:#c7c7c7;flex:0 0 auto}
