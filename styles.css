@@ -2310,7 +2310,7 @@ html[data-theme="light"] .hero__text{color:var(--d-text-2)}
 .tr__hero-media{position:absolute;inset:0;background-size:cover;background-position:center}
 .tr__hero::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,var(--d-bg) 0%,var(--d-bg) 15%,rgba(0,0,0,0) 55%),
-             linear-gradient(0deg,var(--d-bg) 2%,var(--d-bg) 8%rgba(0,0,0,0) 30%)}
+             linear-gradient(0deg,var(--d-bg) 2%,var(--d-bg) 8%,rgba(0,0,0,0) 30%)}
 html[data-theme="light"] .tr__hero::after{
   background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,.55) 30%,rgba(255,255,255,0) 60%),
              linear-gradient(90deg,#fff 0%,rgba(255,255,255,0) 55%)}
