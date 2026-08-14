@@ -2459,8 +2459,6 @@ html[data-theme="light"] .notif__item{border-color:var(--pg-line)}
   font-weight:600;line-height:.8;
   color:var(--d-bg);
   -webkit-text-stroke:3px #b69cff;
-  paint-order: stroke fill;
-  -webkit-paint-order: stroke fill;
   margin-right:-24px;
   user-select:none;pointer-events:none;
 }
