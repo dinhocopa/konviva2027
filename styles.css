@@ -2349,7 +2349,11 @@ html[data-theme="light"] .tr__prog{background:var(--pg-line)}
   padding:0 var(--k-sp-8) 56px;
   display:flex;flex-direction:column;gap:32px;
 }
-.tr__status{display:flex;gap:24px;flex-wrap:wrap;font-size:16px;color:var(--d-text)}
+.tr__status{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  font-size:16px;color:var(--d-text);
+}
 .tr__grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   gap:16px;
@@ -2458,7 +2462,7 @@ html[data-theme="light"] .notif__item{border-color:var(--pg-line)}
   flex:0 0 auto;
   font-size:240px;
   font-weight:600;line-height:.8;
-  color:#b69cff;
+  color:var(--d-bg);
   -webkit-text-stroke:3px #b69cff;
   paint-order:stroke fill;
   -webkit-paint-order:stroke fill;
