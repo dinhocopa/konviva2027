@@ -2330,11 +2330,12 @@ html[data-theme="light"] .tr__hero::after{
 .tr__back:hover{background:var(--hover-soft)}
 .tr__hero-content{display:flex;flex-direction:column;align-items:flex-start;margin-top:122px}
 .tr__title{margin:0 0 16px;font-size:38px;font-weight:700;color:var(--d-text);line-height:1.15}
-.tr__desc{margin:0 0 32px;max-width:640px;font-size:16px;line-height:1.6;color:var(--d-text)}
+.tr__badge{padding:4px 10px;border:1px solid var(--d-border-strong);border-radius:4px;background:#121212;color:var(--d-text);font-size:12px;margin:0 0 16px}
 .tr__tags{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 0 16px}
 .tr__tag{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--d-text)}
 .tr__tag svg{color:var(--d-text)}
 .tr__dot{width:6px;height:6px;border-radius:50%;background:#c7c7c7;flex:0 0 auto}
+.tr__desc{margin:0 0 32px;max-width:640px;font-size:16px;line-height:1.6;color:var(--d-text)}
 .tr__cta{display:flex;flex-direction:column;gap:8px;align-items:stretch;width:257px;max-width:100%}
 .tr__continue{width:100%;height:44px;padding:0 22px;font-size:16px;font-weight:600;gap:8px}
 .tr__prog{height:4px;border-radius:5px;background:#242424;overflow:hidden}
