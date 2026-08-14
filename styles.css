@@ -1465,6 +1465,7 @@ html[data-theme="light"] .ccard__foot{background:var(--pg-bg)}
 
 /* ---------- abas ---------- */
 .tabs{display:flex;align-items:center;gap:var(--k-sp-2);margin-bottom:var(--k-sp-5);
+  border-bottom:1px solid var(--pg-line);flex-wrap:wrap}
 .tabs--between{justify-content:space-between}
 .tabs__group{display:flex;align-items:center;gap:var(--k-sp-2);flex-wrap:wrap}
 .tabs__sep{width:1px;height:24px;background:var(--pg-line);margin:0 var(--k-sp-3)}
