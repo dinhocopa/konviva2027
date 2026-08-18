@@ -231,15 +231,16 @@
     var next = carousel.querySelector('[data-dir="next"]');
     if(!track) return;
 
+    var viewport = carousel.querySelector(".carousel__viewport") || carousel;
     var offset = 0;
 
     function step(){
       var first = track.firstElementChild;
       var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16;
-      return first ? first.getBoundingClientRect().width + gap : track.clientWidth * .8;
+      return first ? first.getBoundingClientRect().width + gap : viewport.clientWidth * .8;
     }
     function maxOffset(){
-      return Math.max(0, track.scrollWidth - carousel.clientWidth);
+      return Math.max(0, track.scrollWidth - viewport.clientWidth);
     }
     function apply(){
       offset = Math.max(0, Math.min(offset, maxOffset()));
@@ -251,6 +252,14 @@
     if(next) next.addEventListener("click", function(){ offset += step(); apply(); });
     window.addEventListener("resize", apply);
     apply();
+    // recalcula quando o carousel entra em tela (rotas ocultas medem clientWidth=0 no load)
+    if("IntersectionObserver" in window){
+      var io = new IntersectionObserver(function(ents){
+        ents.forEach(function(e){ if(e.isIntersecting) apply(); });
+      });
+      io.observe(carousel);
+    }
+    setTimeout(apply, 300);
   });
 })();
 
