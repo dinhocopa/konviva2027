@@ -539,21 +539,26 @@ html[data-theme="light"] .hero::after{
 .btn-accent--brand:hover{background:var(--k-purple-700)}
 
 /* ---------------- Carrossel ---------------- */
-.carousel{position:relative;overflow:hidden;padding:44px 0}
+.carousel{position:relative;padding:16px 0}
+.carousel__viewport{overflow-x:clip;overflow-y:visible;padding:12px 0 200px;margin:-12px 0 -200px}
 .carousel__track{
   display:flex;
   gap:var(--k-sp-4);
   transition:transform 420ms var(--k-ease);
   will-change:transform;
 }
-.carousel__track > *{flex:0 0 var(--track-col,300px)}
+.carousel__track > *{flex:0 0 var(--track-col,300px);position:relative}
+.carousel:has(.ccard:hover) .carousel__nav,
+.carousel:has(.ccard:focus-within) .carousel__nav,
+.carousel:has(.ucard:hover) .carousel__nav,
+.carousel:has(.ucard:focus-within) .carousel__nav{opacity:0;pointer-events:none}
 .carousel__nav{
   position:absolute;top:50%;right:8px;transform:translateY(-50%);
   width:40px;height:40px;display:grid;place-items:center;
   background:rgba(20,20,24,.9);color:#fff;
   border:1px solid var(--d-border-strong);border-radius:50%;
   cursor:pointer;z-index:40;
-  transition:background var(--k-dur) var(--k-ease);
+  transition:background var(--k-dur) var(--k-ease),opacity .15s var(--k-ease);
 }
 .carousel__nav:hover{background:var(--d-surface-2)}
 .carousel__nav--prev{right:auto;left:8px}
@@ -978,18 +983,20 @@ html[data-theme="light"] .jrankrow--me{background:var(--pg-bg)}
   border-radius:10px;
   padding:8px;
   cursor:pointer;
-  transform-origin:center top;
-  transition:transform 220ms var(--k-ease),box-shadow 220ms var(--k-ease);
+  transition:box-shadow 220ms var(--k-ease);
   z-index:1;
 }
 .ccard:hover,
 .ccard:focus-within{
-  transform:scale(1.18);
+  position:absolute;top:0;left:-50px;
+  width:400px;
   box-shadow:0 22px 56px rgba(0,0,0,.8);
   z-index:30;
 }
-.ccard:first-child:hover,.ccard:first-child:focus-within{transform-origin:left top}
-.ccard:last-child:hover,.ccard:last-child:focus-within{transform-origin:right top}
+.carousel__track > :first-child .ccard:hover,
+.carousel__track > :first-child .ccard:focus-within{left:0}
+.carousel__track > :last-child .ccard:hover,
+.carousel__track > :last-child .ccard:focus-within{left:auto;right:0}
 .ccard:focus-visible{outline:2px solid var(--cc-accent);outline-offset:3px}
 
 .ccard__media{
@@ -1349,7 +1356,19 @@ html[data-theme="light"] .ccard__foot{background:var(--pg-bg)}
 }
 .lastcourses__title{margin:0 0 var(--k-sp-4);font-size:19px;font-weight:500}
 
-.ucard{cursor:pointer}
+.ucard{cursor:pointer;position:relative;transition:box-shadow 220ms var(--k-ease);z-index:1}
+.ucard:hover,.ucard:focus-within{
+  position:absolute;top:0;left:-50px;
+  width:360px;
+  background:var(--cc-bg);border-radius:10px;padding:8px;
+  box-shadow:0 22px 56px rgba(0,0,0,.8);z-index:30;
+}
+.carousel__track > :first-child .ucard:hover,
+.carousel__track > :first-child .ucard:focus-within{left:0}
+.carousel__track > :last-child .ucard:hover,
+.carousel__track > :last-child .ucard:focus-within{left:auto;right:0}
+.ucard .ccard__extra{display:grid;grid-template-rows:0fr;transition:grid-template-rows 240ms var(--k-ease),opacity 180ms;opacity:0}
+.ucard:hover .ccard__extra,.ucard:focus-within .ccard__extra{grid-template-rows:1fr;opacity:1}
 .ucard__media{position:relative;aspect-ratio:16/11;border-radius:8px;overflow:hidden}
 .ucard__title{margin:10px 0 10px;font-size:14px;font-weight:400;color:#fff;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -2445,7 +2464,7 @@ html[data-theme="light"] .notif__item{border-color:var(--pg-line)}
    (100% - 4*gap)/5, pois % do flex item resolve contra a largura do track */
 .top10__track > .topitem{
   display:flex;align-items:flex-start;
-  flex:0 0 auto;width:340px;
+  flex:0 0 auto;position:relative;
 }
 .topitem__num{
   flex:0 0 auto;
@@ -2458,11 +2477,12 @@ html[data-theme="light"] .notif__item{border-color:var(--pg-line)}
   margin-right:-24px;
   user-select:none;pointer-events:none;
 }
-.topitem .ccard{flex:1;min-width:0}
+.topitem .ccard{flex:0 0 300px;min-width:0;position:relative;z-index:1}
+.topitem .ccard:hover,.topitem .ccard:focus-within{left:auto;right:auto;width:400px}
+.top10__track > :last-child .topitem .ccard:hover{right:0;left:auto}
 /* overlap por dígito, fiel ao Figma (node 3037-9601) */
 .topitem:nth-child(1) .topitem__num{margin-right:-42px}
 .topitem:nth-child(2) .topitem__num{margin-right:-32px}
-.topitem .ccard{position:relative;z-index:1;width:100%}
 .top10__nav{
   position:absolute;top:50%;right:8px;transform:translateY(-50%);
   width:36px;height:36px;border-radius:50%;
