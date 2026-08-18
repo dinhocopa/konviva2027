@@ -962,11 +962,14 @@ html[data-theme="light"] .jrankrow--me{background:var(--pg-bg)}
 /* 5 cards preenchendo a largura. Sem overflow: o card expandido
    precisa sobrepor os vizinhos e as seções seguintes, não ser recortado. */
 .cardgrid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
+  display:flex;
   gap:var(--k-sp-4);
-  overflow:visible;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
 }
+.cardgrid::-webkit-scrollbar{display:none}
 .featuregrid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -981,6 +984,7 @@ html[data-theme="light"] .jrankrow--me{background:var(--pg-bg)}
 .ccard{
   position:relative;
   display:flex;flex-direction:column;
+  flex:0 0 260px;scroll-snap-align:start;
   background:var(--cc-bg);
   border-radius:10px;
   padding:8px;
@@ -1095,8 +1099,6 @@ html[data-theme="light"] .ccard__foot{background:var(--pg-bg)}
 .ccard__info:hover{background:rgba(134,201,255,.14)}
 
 /* sem hover disponível: primeiro toque expande, segundo aciona */
-@media (max-width:1100px){.cardgrid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:700px){.cardgrid{grid-template-columns:repeat(2,1fr)}}
 @media (hover:none){
   .ccard:focus-within{transform:none;box-shadow:none}
 }
@@ -2450,13 +2452,17 @@ html[data-theme="light"] .notif__item{border-color:var(--pg-line)}
 .top10__track{
   display:flex;
   gap:var(--k-sp-4);
-  overflow:hidden;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
 }
+.top10__track::-webkit-scrollbar{display:none}
 /* item = número em FLUXO + card; largura do card idêntica à do .cardgrid:
    (100% - 4*gap)/5, pois % do flex item resolve contra a largura do track */
 .topitem{
   display:flex;align-items:flex-start;
-  flex:0 0 calc((100% - 4*var(--k-sp-4))/5 + 109px);
+  flex:0 0 300px;scroll-snap-align:start;
 }
 .topitem__num{
   flex:0 0 auto;
@@ -2471,9 +2477,7 @@ html[data-theme="light"] .notif__item{border-color:var(--pg-line)}
 }
 .topitem .ccard{flex:1;min-width:0}
 /* overlap por dígito, fiel ao Figma (node 3037-9601) */
-.topitem:nth-child(1){flex-basis:calc((100% - 4*var(--k-sp-4))/5 + 91px)}
 .topitem:nth-child(1) .topitem__num{margin-right:-42px}
-.topitem:nth-child(2){flex-basis:calc((100% - 4*var(--k-sp-4))/5 + 101px)}
 .topitem:nth-child(2) .topitem__num{margin-right:-32px}
 .topitem .ccard{position:relative;z-index:1;width:100%}
 .top10__nav{
