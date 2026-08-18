@@ -539,25 +539,24 @@ html[data-theme="light"] .hero::after{
 .btn-accent--brand:hover{background:var(--k-purple-700)}
 
 /* ---------------- Carrossel ---------------- */
-.carousel{position:relative;padding:16px 0}
+.carousel{position:relative;padding:16px 56px}
 .carousel__viewport{overflow-x:clip;overflow-y:visible;padding:12px 0 200px;margin:-12px 0 -200px}
 .carousel__track{
   display:flex;
   gap:var(--k-sp-4);
+  padding-right:64px;
   transition:transform 420ms var(--k-ease);
   will-change:transform;
 }
 .carousel__track > *{flex:0 0 var(--track-col,300px);position:relative}
-.carousel:has(.ccard:hover) .carousel__nav,
-.carousel:has(.ccard:focus-within) .carousel__nav,
-.carousel:has(.ucard:hover) .carousel__nav,
-.carousel:has(.ucard:focus-within) .carousel__nav{opacity:0;pointer-events:none}
+.cslot{position:relative}
+.cslot > .ccard,.cslot > .ucard{width:100%}
 .carousel__nav{
   position:absolute;top:50%;right:8px;transform:translateY(-50%);
   width:40px;height:40px;display:grid;place-items:center;
   background:rgba(20,20,24,.9);color:#fff;
   border:1px solid var(--d-border-strong);border-radius:50%;
-  cursor:pointer;z-index:40;
+  cursor:pointer;z-index:50;
   transition:background var(--k-dur) var(--k-ease),opacity .15s var(--k-ease);
 }
 .carousel__nav:hover{background:var(--d-surface-2)}
@@ -988,13 +987,11 @@ html[data-theme="light"] .jrankrow--me{background:var(--pg-bg)}
 }
 .ccard:hover,
 .ccard:focus-within{
-  position:absolute;top:0;left:-50px;
+  position:absolute;top:0;left:0;
   width:400px;
   box-shadow:0 22px 56px rgba(0,0,0,.8);
   z-index:30;
 }
-.carousel__track > :first-child .ccard:hover,
-.carousel__track > :first-child .ccard:focus-within{left:0}
 .carousel__track > :last-child .ccard:hover,
 .carousel__track > :last-child .ccard:focus-within{left:auto;right:0}
 .ccard:focus-visible{outline:2px solid var(--cc-accent);outline-offset:3px}
@@ -1358,13 +1355,11 @@ html[data-theme="light"] .ccard__foot{background:var(--pg-bg)}
 
 .ucard{cursor:pointer;position:relative;transition:box-shadow 220ms var(--k-ease);z-index:1}
 .ucard:hover,.ucard:focus-within{
-  position:absolute;top:0;left:-50px;
+  position:absolute;top:0;left:0;
   width:360px;
   background:var(--cc-bg);border-radius:10px;padding:8px;
   box-shadow:0 22px 56px rgba(0,0,0,.8);z-index:30;
 }
-.carousel__track > :first-child .ucard:hover,
-.carousel__track > :first-child .ucard:focus-within{left:0}
 .carousel__track > :last-child .ucard:hover,
 .carousel__track > :last-child .ucard:focus-within{left:auto;right:0}
 .ucard .ccard__extra{display:grid;grid-template-rows:0fr;transition:grid-template-rows 240ms var(--k-ease),opacity 180ms;opacity:0}
