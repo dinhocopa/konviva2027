@@ -224,28 +224,33 @@
   window.KV = window.KV || {};
   window.KV.pintarSlots = pintarSlots;
 
-  /* ---------- Carrosséis ---------- */
+  /* ---------- Carrosséis (translateX, sem overflow, hover expande livre) ---------- */
   document.querySelectorAll(".carousel").forEach(function(carousel){
     var track = carousel.querySelector(".carousel__track");
     var prev = carousel.querySelector('[data-dir="prev"]');
     var next = carousel.querySelector('[data-dir="next"]');
     if(!track) return;
 
+    var offset = 0;
+
     function step(){
       var first = track.firstElementChild;
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 16;
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16;
       return first ? first.getBoundingClientRect().width + gap : track.clientWidth * .8;
     }
-    function sync(){
-      var max = track.scrollWidth - track.clientWidth - 2;
-      if(prev) prev.hidden = track.scrollLeft <= 2;
-      if(next) next.hidden = track.scrollLeft >= max;
+    function maxOffset(){
+      return Math.max(0, track.scrollWidth - carousel.clientWidth);
     }
-    if(prev) prev.addEventListener("click", function(){ track.scrollLeft -= step(); });
-    if(next) next.addEventListener("click", function(){ track.scrollLeft += step(); });
-    track.addEventListener("scroll", sync, { passive:true });
-    window.addEventListener("resize", sync);
-    sync();
+    function apply(){
+      offset = Math.max(0, Math.min(offset, maxOffset()));
+      track.style.transform = "translateX(" + (-offset) + "px)";
+      if(prev) prev.hidden = offset <= 2;
+      if(next) next.hidden = offset >= maxOffset() - 2;
+    }
+    if(prev) prev.addEventListener("click", function(){ offset -= step(); apply(); });
+    if(next) next.addEventListener("click", function(){ offset += step(); apply(); });
+    window.addEventListener("resize", apply);
+    apply();
   });
 })();
 
