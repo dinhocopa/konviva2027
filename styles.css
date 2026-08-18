@@ -539,30 +539,24 @@ html[data-theme="light"] .hero::after{
 .btn-accent--brand:hover{background:var(--k-purple-700)}
 
 /* ---------------- Carrossel ---------------- */
-.carousel{position:relative}
+.carousel{position:relative;overflow:hidden;padding:44px 0}
 .carousel__track{
-  display:grid;
-  grid-auto-flow:column;
-  grid-auto-columns:var(--track-col,300px);
+  display:flex;
   gap:var(--k-sp-4);
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-  scrollbar-width:none;
-  padding-bottom:2px;
+  transition:transform 420ms var(--k-ease);
+  will-change:transform;
 }
-.carousel__track::-webkit-scrollbar{display:none}
-.carousel__track > *{scroll-snap-align:start}
+.carousel__track > *{flex:0 0 var(--track-col,300px)}
 .carousel__nav{
-  position:absolute;top:50%;right:-14px;transform:translateY(-50%);
-  width:32px;height:32px;display:grid;place-items:center;
+  position:absolute;top:50%;right:8px;transform:translateY(-50%);
+  width:40px;height:40px;display:grid;place-items:center;
   background:rgba(20,20,24,.9);color:#fff;
   border:1px solid var(--d-border-strong);border-radius:50%;
-  cursor:pointer;z-index:2;
+  cursor:pointer;z-index:40;
   transition:background var(--k-dur) var(--k-ease);
 }
 .carousel__nav:hover{background:var(--d-surface-2)}
-.carousel__nav--prev{right:auto;left:-14px}
+.carousel__nav--prev{right:auto;left:8px}
 .carousel__nav[hidden]{display:none}
 
 /* ---------------- Placeholders de imagem ---------------- */
@@ -964,12 +958,8 @@ html[data-theme="light"] .jrankrow--me{background:var(--pg-bg)}
 .cardgrid{
   display:flex;
   gap:var(--k-sp-4);
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-  scrollbar-width:none;
 }
-.cardgrid::-webkit-scrollbar{display:none}
+.cardgrid > *{flex:0 0 300px}
 .featuregrid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -984,7 +974,6 @@ html[data-theme="light"] .jrankrow--me{background:var(--pg-bg)}
 .ccard{
   position:relative;
   display:flex;flex-direction:column;
-  flex:0 0 260px;scroll-snap-align:start;
   background:var(--cc-bg);
   border-radius:10px;
   padding:8px;
@@ -2450,19 +2439,13 @@ html[data-theme="light"] .notif__item{border-color:var(--pg-line)}
 
 /* mostra os 5 primeiros; expansão do card no hover fica visível */
 .top10__track{
-  display:flex;
   gap:var(--k-sp-4);
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-  scrollbar-width:none;
 }
-.top10__track::-webkit-scrollbar{display:none}
 /* item = número em FLUXO + card; largura do card idêntica à do .cardgrid:
    (100% - 4*gap)/5, pois % do flex item resolve contra a largura do track */
-.topitem{
+.top10__track > .topitem{
   display:flex;align-items:flex-start;
-  flex:0 0 300px;scroll-snap-align:start;
+  flex:0 0 auto;width:340px;
 }
 .topitem__num{
   flex:0 0 auto;
